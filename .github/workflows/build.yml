@@ -12,25 +12,40 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        projectPath:
+            - "New Unity Project"
         targetPlatform:
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
     steps:
+      ###########################
+      #         Checkout        #
+      ###########################
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
           lfs: true
-      - run: ls
-      - run: cd 
+          
+      ###########################
+      #          Cache          #
+      ###########################
       - uses: actions/cache@v2
         with:
-          path: "New Unity Project/Library"
-          key: Library-${{ matrix.targetPlatform }}
-          restore-keys: Library-
+          path: ${{ matrix.projectPath }}/Library
+          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-${{ matrix.projectPath }}-
+            Library-
+      
+      ###########################
+      #          Build          #
+      ###########################
       - uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
+          projectPath: ${{ matrix.projectPath }}
           targetPlatform: ${{ matrix.targetPlatform }}
+
       - uses: actions/upload-artifact@v2
         with:
           name: Build-${{ matrix.targetPlatform }}
