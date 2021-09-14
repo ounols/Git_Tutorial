@@ -19,6 +19,8 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+      - run: ls
+      - run: cd New Unity Project
       - uses: actions/cache@v2
         with:
           path: New Unity Project/Library
