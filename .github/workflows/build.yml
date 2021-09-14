@@ -59,8 +59,7 @@ jobs:
         with:
           projectPath: ${{ matrix.projectPath }}
           targetPlatform: ${{ matrix.targetPlatform }}
-          githubToken: ${{ secrets.GIT_PAT }}
-          token: ${{ secrets.GIT_PAT }}
+          allowDirtyBuild: true
 
       - uses: actions/upload-artifact@v2
         with:
