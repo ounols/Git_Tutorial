@@ -32,6 +32,8 @@ jobs:
           ref: dev
           token: ${{ secrets.GIT_PAT }}
           
+      - run: ls
+          
       ###########################
       #          Cache          #
       ###########################
