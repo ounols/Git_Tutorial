@@ -19,11 +19,16 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+      - uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          targetPlatform: StandaloneWindows64
       - run: ls
-      - run: cd "New Unity Project"
+      - run: cd 
       - uses: actions/cache@v2
         with:
-          path: Library
+          path: "New Unity Project/Library"
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
       - uses: game-ci/unity-builder@v2
