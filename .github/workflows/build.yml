@@ -20,10 +20,10 @@ jobs:
           fetch-depth: 0
           lfs: true
       - run: ls
-      - run: cd New Unity Project
+      - run: cd "New Unity Project"
       - uses: actions/cache@v2
         with:
-          path: New Unity Project/Library
+          path: Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
       - uses: game-ci/unity-builder@v2
