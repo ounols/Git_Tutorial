@@ -31,6 +31,10 @@ jobs:
           repository: TIMILUM/Esper-Fighters-Cup
           ref: dev
           token: ${{ secrets.GIT_PAT }}
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          lfs: true
           
       - run: ls
           
