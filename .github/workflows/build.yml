@@ -19,7 +19,7 @@ jobs:
         projectPath:
             - Esper-Fighters-Cup
         targetPlatform:
-          - StandaloneWindows # Build a Windows standalone.
+          - StandaloneWindows64 # Build a Windows standalone.
     steps:
       ###########################
       #         Checkout        #
